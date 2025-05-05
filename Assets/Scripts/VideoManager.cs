@@ -15,8 +15,20 @@ public class VideoManager : MonoBehaviour
 
     private string filePath; // CSV 파일 경로
 
-    void Start()
+    private void Awake()
     {
+        playButton.onClick.AddListener(PlayVideo);
+        optionAButton.onClick.AddListener(() => SelectOption("A"));
+        optionBButton.onClick.AddListener(() => SelectOption("B"));
+
+
+        videoPlayer.loopPointReached += EndReached;
+    }
+
+    void OnEnable()
+    {
+        playButton.gameObject.SetActive(true); // 비디오 재생 버튼 활성화
+
         userInfoManager = UserInfoManager.Instance; // Singleton 사용
         if (userInfoManager == null)
         {
@@ -24,13 +36,13 @@ public class VideoManager : MonoBehaviour
             return; // UserInfoManager가 없으면 이후 코드를 실행하지 않음
         }
 
-        playButton.onClick.AddListener(PlayVideo);
-        optionAButton.onClick.AddListener(() => SelectOption("A"));
-        optionBButton.onClick.AddListener(() => SelectOption("B"));
-
         optionAButton.gameObject.SetActive(false);
         optionBButton.gameObject.SetActive(false);
-        
+
+
+        rawImage.gameObject.SetActive(true);
+        videoPlayer.Stop();        // 재생 중이었다면 멈추고
+        videoPlayer.StepForward();  // 0프레임을 바로 디코딩
         videoPlayer.Prepare();
 
         // 파일 경로 설정 (실행 파일이 있는 경로에 저장)
@@ -40,17 +52,11 @@ public class VideoManager : MonoBehaviour
 
     void PlayVideo()
     {
-        MoveButtonOffScreen();
         rawImage.gameObject.SetActive(true);
         videoPlayer.Play();
-        videoPlayer.loopPointReached += EndReached;
         rawImage.gameObject.SetActive(false);
-    }
 
-    void MoveButtonOffScreen()
-    {
-        RectTransform rectTransform = playButton.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, 1000);
+        playButton.gameObject.SetActive(false); // 비디오 재생 후 버튼 숨김
     }
 
     void EndReached(VideoPlayer vp)
@@ -69,7 +75,8 @@ public class VideoManager : MonoBehaviour
         SaveToCSV(option);
 
         // "event" 씬으로 전환
-        SceneManager.LoadScene("event");
+        //SceneManager.LoadScene("event");
+        GlobalManager.Instance.SetState(EState.Event); // GlobalManager를 통해 상태 변경
     }
 
     private void SaveToCSV(string option)

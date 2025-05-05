@@ -33,12 +33,17 @@ public class UserInfoManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        submitButton.onClick.AddListener(SubmitUserInfo);
+
+        // 전화번호 입력 필드와 MBTI 입력 필드에 이벤트 추가
+        phoneInput.onSelect.AddListener(OnPhoneInputSelected);
+        mbtiInput.onSelect.AddListener(OnMbtiInputSelected);
     }
 
-    void Start()
+    void OnEnable()
     {
         selectedOption = PlayerPrefs.GetString("SelectedOption", "");
-        submitButton.onClick.AddListener(SubmitUserInfo);
         
         filePath = Path.Combine(Application.persistentDataPath, "user_data.csv");
 
@@ -51,10 +56,6 @@ public class UserInfoManager : MonoBehaviour
         
         // 입력 필드 설정
         phoneInput.contentType = TMP_InputField.ContentType.DecimalNumber; // 숫자 입력 전용
-
-        // 전화번호 입력 필드와 MBTI 입력 필드에 이벤트 추가
-        phoneInput.onSelect.AddListener(OnPhoneInputSelected);
-        mbtiInput.onSelect.AddListener(OnMbtiInputSelected);
     }
 
     void OnPhoneInputSelected(string text)
@@ -107,7 +108,9 @@ public class UserInfoManager : MonoBehaviour
         File.AppendAllText(filePath, csvLine);
         Debug.Log("데이터가 CSV 파일에 저장되었습니다: " + csvLine);
         
-        SceneManager.LoadScene("AIvideo");
+        //SceneManager.LoadScene("AIvideo");
+        // 비디오로 전환
+        GlobalManager.Instance.SetState(EState.Video);
     }
 
     string GetSelectedToggleText(ToggleGroup toggleGroup, string warningMessage)

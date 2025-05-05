@@ -1,0 +1,10 @@
+# ninja log v5
+68	3264	7681323059942733	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	83386bf5919b006b
+49	3559	7681323063142007	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	8721c9d2af6155a
+1	3579	7681323063928635	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	540eebe7b8f62c7e
+108	3596	7681323063737220	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	b69b87f1c75bafce
+16	4156	7681323069428805	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	a221679032b26b8a
+133	4173	7681323069767079	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	d1c925b9f51cc074
+88	4803	7681323076406573	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	718fd34e5d3eff3f
+31	5041	7681323078438561	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	3faa56a9345841ba
+5042	5710	7681323085985842	C:/AI Ethics VR/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/l1i5j3e8/obj/arm64-v8a/libgame.so	3dc63cdd4051a9ae

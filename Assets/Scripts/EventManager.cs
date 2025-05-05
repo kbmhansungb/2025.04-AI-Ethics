@@ -13,18 +13,21 @@ public class EventManager : MonoBehaviour
 
     private int currentMessageIndex; // 현재 메시지 인덱스
 
-    void Start()
+    private void Awake()
+    {
+        restartButton.onClick.AddListener(RestartGame);
+
+        // 비디오가 끝났을 때 호출될 이벤트 등록
+        videoPlayer.loopPointReached += OnVideoFinished;
+    }
+
+    void OnEnable()
     {
         // PlayerPrefs에서 이전 실행 인덱스를 가져오기
         currentMessageIndex = PlayerPrefs.GetInt("CurrentMessageIndex", 0);
 
         // 결과 텍스트 설정
         UpdateResultTexts();
-
-        restartButton.onClick.AddListener(RestartGame);
-
-        // 비디오가 끝났을 때 호출될 이벤트 등록
-        videoPlayer.loopPointReached += OnVideoFinished;
         
         // 버튼과 텍스트 숨김
         restartButton.gameObject.SetActive(false);
@@ -55,8 +58,9 @@ public class EventManager : MonoBehaviour
 
         // CSV 파일로 결과 저장
         SaveResultsToCSV();
-        
-        SceneManager.LoadScene("info"); // "info" 씬으로 전환
+
+        //SceneManager.LoadScene("info"); // "info" 씬으로 전환
+        GlobalManager.Instance.SetState(EState.Info); // "info" 씬으로 전환
     }
 
     void UpdateResultTexts()

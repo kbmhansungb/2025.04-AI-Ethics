@@ -6,17 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/info.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/AIvideo.unity
-    guid: 96d53c3208ddb9b43b85bc028555dd6f
-  - enabled: 1
-    path: Assets/Scenes/event.unity
-    guid: 2a76c6423f6aad44b9b95ddd770917eb
+    path: Assets/Scenes/VRSample/SampleScene.unity
+    guid: 55daccc09a3b69647bbab145b54a3ab3
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 78966af8087c9244f8640d05eac340fd, type: 2}
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c3fabbe45fc30d5438ebf18069c76f68, type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 9c24b289a4e66f949b7216d65adc4708, type: 2}
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
+    Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 9bec1ce6a03ccba4b9a8215241b32e63, type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: a49cadc1a815591479693b955ccf08c1, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 985fdffee33a5944396199c6b7145dd4, type: 3}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1a4c68ca72a83449f938d669337cb305, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: a9a6963505ddf7f4d886008c6dc86122, type: 2}
   m_UseUCBPForAssetBundles: 0
